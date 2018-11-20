@@ -17,10 +17,7 @@ public class TilePuzzle implements IProblem
 		_heuristic = new TilePuzzleHeuristic();
 	}
 	
-	public TilePuzzle
-	(
-		String problemName
-	)
+	public TilePuzzle	(String problemName	)
 	{
 		importInstance(problemName);
 		_heuristic = new TilePuzzleHeuristic();
@@ -77,10 +74,7 @@ public class TilePuzzle implements IProblem
 		return false;
 	}
 
-	private void importInstance
-	(
-		String problemName
-	)
+	private void importInstance	(String problemName	)
 	{
 		// Get the file
 		File file 	= new File(problemName); 
@@ -139,5 +133,6 @@ public class TilePuzzle implements IProblem
 			return true;
 		return false;
 	}
+
 
 }

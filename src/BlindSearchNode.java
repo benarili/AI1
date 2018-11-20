@@ -3,22 +3,14 @@ public class BlindSearchNode extends ASearchNode
 {
 	double	_g;
 
-	public BlindSearchNode
-	(
-		IProblemState 	currentProblemState
-	) 
+	public BlindSearchNode	(IProblemState 	currentProblemState	)
 	{
 		_prev					= null;
 		_currentProblemState 	= currentProblemState;
 		_g 						= 0;
 	}
 	
-	public BlindSearchNode
-	(
-		ASearchNode		prev,
-		IProblemState 	currentProblemState,
-		double 			g
-	) 
+	public BlindSearchNode	(ASearchNode prev,IProblemState	currentProblemState,double g)
 	{
 		_prev					= prev;
 		_currentProblemState 	= currentProblemState;
@@ -44,10 +36,7 @@ public class BlindSearchNode extends ASearchNode
 	}
 
 	@Override
-	public ASearchNode createSearchNode
-	(
-		IProblemState 	currentProblemState
-	) 
+	public ASearchNode createSearchNode	(IProblemState 	currentProblemState	)
 	{
 		double 		g		= _g + currentProblemState.getStateLastMoveCost();
 		ASearchNode newNode = new BlindSearchNode(this, currentProblemState, g);

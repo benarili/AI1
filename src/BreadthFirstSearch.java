@@ -1,7 +1,13 @@
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BreadthFirstSearch  extends ASearch
 {
 	// Define lists here ...
+	private Queue<ASearchNode> _openList;
+	private Collection<ASearchNode> _closed;
 	
 	@Override
 	public String getSolverName() 
@@ -10,10 +16,7 @@ public class BreadthFirstSearch  extends ASearch
 	}
 
 	@Override
-	public ASearchNode createSearchRoot
-	(
-		IProblemState problemState
-	) 
+	public ASearchNode createSearchRoot	(IProblemState problemState	)
 	{
 		ASearchNode newNode = new BlindSearchNode(problemState);
 		return newNode;
@@ -22,64 +25,52 @@ public class BreadthFirstSearch  extends ASearch
 	@Override
 	public void initLists() 
 	{
-
+		_openList = new LinkedList<>();
+		_closed = new HashSet<>();
 	}
 
 	@Override
-	public ASearchNode getOpen
-	(
-		ASearchNode node
-	) 
+	public ASearchNode getOpen	(ASearchNode node)
 	{
+		if(_openList.contains(node))
+			return node;
 		return null;
 	}
 
 	@Override
-	public boolean isOpen
-	(
-		ASearchNode node
-	) 
+	public boolean isOpen(ASearchNode node	)
 	{
-		return false;
+		return _openList.contains(node);
 	}
 	
 	@Override
-	public boolean isClosed
-	(
-		ASearchNode node
-	) 
+	public boolean isClosed	(ASearchNode node)
 	{
-		return false;
+		return  _closed.contains(node);
 	}
 
 	@Override
-	public void addToOpen
-	(
-		ASearchNode node
-	) 
+	public void addToOpen(ASearchNode node	)
 	{
-		
+		_openList.add(node);
 	}
 
 	@Override
-	public void addToClosed
-	(
-		ASearchNode node
-	) 
+	public void addToClosed	(ASearchNode node)
 	{
- 
+ 		_closed.add(node);
 	}
 
 	@Override
 	public int openSize() 
 	{
-		return 0;
+		return _openList.size();
 	}
 
 	@Override
 	public ASearchNode getBest() 
 	{
-		return null;
+		return _openList.poll();
 	}
 
 	

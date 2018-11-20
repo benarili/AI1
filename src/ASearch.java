@@ -4,10 +4,7 @@ import java.util.List;
 
 abstract public class ASearch
 {	
-	public List<IProblemMove> solve
-	(
-		IProblem problem
-	) 
+	public List<IProblemMove> solve	(IProblem problem)
 	{
 		IProblemState 		problemState	= problem.getProblemState();
 		ASearchNode			goal			= abstractSearch(problemState);
@@ -15,10 +12,7 @@ abstract public class ASearch
 		return solution;
 	}
 	
-	private	ASearchNode	abstractSearch
-	(
-		IProblemState problemState
-	)
+	private	ASearchNode	abstractSearch	(IProblemState problemState	)
 	{
 		initLists();
 		ASearchNode Vs 		= createSearchRoot(problemState);
@@ -27,6 +21,7 @@ abstract public class ASearch
 		
 		while (openSize() > 0)
 		{
+			System.out.println(problemState.toString());
 			current = getBest();
 			if (current.isGoal())
 				return current;
@@ -44,10 +39,7 @@ abstract public class ASearch
 		return null;
 	}
 	
-	private List<IProblemMove> goalNodeToSolutionPath
-	(
-		ASearchNode goal
-	)
+	private List<IProblemMove> goalNodeToSolutionPath	(ASearchNode goal)
 	{
 		if (goal == null)
 			return null;
