@@ -21,6 +21,7 @@ abstract public class ASearch
 		
 		while (openSize() > 0)
 		{
+			System.out.println(problemState.toString());
 			current = getBest();
 			if (current.isGoal())
 				return current;

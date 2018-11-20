@@ -3,37 +3,14 @@ import java.util.*;
 public class UniformCostSearch   extends ASearch
 {
 	// Define lists here ...
-	private class WeightedNode implements Comparable<WeightedNode>{
-		private ASearchNode node;
-		private int weight;
 
-		public WeightedNode(ASearchNode node, int weight){
-			this.weight=weight;
-			this.node=node;
-		}
+	private class UCSComparator implements Comparator<ASearchNode>{
 
 		@Override
-		public int compareTo(WeightedNode o) {
-			return Integer.compare(this.weight,o.weight);
-		}
-
-		public int getWeight(){
-			return weight;
-		}
-
-		public ASearchNode getNode() {
-			return node;
-		}
-
-		public void setNode(ASearchNode node) {
-			this.node = node;
-		}
-
-		public void setWeight(int weight) {
-			this.weight = weight;
+		public int compare(ASearchNode o1, ASearchNode o2) {
+			return Double.compare(o1.getG(),o2.getG());
 		}
 	}
-
 	private PriorityQueue<ASearchNode> _openList;
 	private Collection<ASearchNode> _closedList;
 	
@@ -53,7 +30,7 @@ public class UniformCostSearch   extends ASearch
 	@Override
 	public void initLists()
 	{
-		_openList = new PriorityQueue<>();
+		_openList = new PriorityQueue<>(new UCSComparator());
 		_closedList = new HashSet<>();
 	}
 
@@ -80,28 +57,25 @@ public class UniformCostSearch   extends ASearch
 	@Override
 	public void addToOpen(ASearchNode node)
 	{
-
+		_openList.add(node);
 	}
 
 	@Override
-	public void addToClosed
-	(
-		ASearchNode node
-	) 
+	public void addToClosed	(ASearchNode node)
 	{
-
+		_closedList.add(node);
 	}
 
 	@Override
 	public int openSize() 
 	{
-		return 0;
+		return _openList.size();
 	}
 
 	@Override
 	public ASearchNode getBest() 
 	{
-		return null;
+		return _openList.poll();
 	}
 
 }

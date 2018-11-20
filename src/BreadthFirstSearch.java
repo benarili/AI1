@@ -70,7 +70,7 @@ public class BreadthFirstSearch  extends ASearch
 	@Override
 	public ASearchNode getBest() 
 	{
-		return _openList.remove();
+		return _openList.poll();
 	}
 
 	
