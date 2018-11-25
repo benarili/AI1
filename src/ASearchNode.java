@@ -4,7 +4,7 @@ import java.util.List;
 abstract public class ASearchNode 
 {
 	ASearchNode		_prev;
-	IProblemState	_currentProblemState;
+	public IProblemState	_currentProblemState;
 	
 	public List<ASearchNode> getNeighbors() 
 	{

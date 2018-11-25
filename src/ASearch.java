@@ -22,6 +22,7 @@ abstract public class ASearch
 		while (openSize() > 0)
 		{
 			current = getBest();
+			//System.out.println(current._currentProblemState.toString());
 			if (current.isGoal())
 				return current;
 			List<ASearchNode> neighbors = current.getNeighbors();

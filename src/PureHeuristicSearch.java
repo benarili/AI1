@@ -7,12 +7,12 @@ public class PureHeuristicSearch  extends ASearch
 	private Collection<ASearchNode> _closed;
 
 	private class PHSComperator implements Comparator<ASearchNode>{
-
 		@Override
 		public int compare(ASearchNode o1, ASearchNode o2) {
-			return Double.compare(o2.getH(),o1.getH());
+			return Double.compare(o1.getH(),o2.getH());
 		}
 	}
+
 	@Override
 	public String getSolverName() 
 	{
@@ -33,7 +33,7 @@ public class PureHeuristicSearch  extends ASearch
 	public void initLists() 
 	{
 		this._open = new PriorityQueue<>(new PHSComperator());
-		this._closed = new HashSet<>();
+		this._closed = new LinkedList<>();
 	}
 
 	@Override
@@ -43,19 +43,13 @@ public class PureHeuristicSearch  extends ASearch
 	}
 
 	@Override
-	public boolean isOpen
-	(
-		ASearchNode node
-	) 
+	public boolean isOpen(ASearchNode node)
 	{
 		return _open.contains(node);
 	}
 	
 	@Override
-	public boolean isClosed
-	(
-		ASearchNode node
-	) 
+	public boolean isClosed	(ASearchNode node)
 	{
 		return _closed.contains(node);
 	}
@@ -63,21 +57,16 @@ public class PureHeuristicSearch  extends ASearch
 	
 
 	@Override
-	public void addToOpen
-	(
-		ASearchNode node
-	) 
+	public void addToOpen(ASearchNode node)
 	{
-		this._open.add(node);
+		_open.add(node);
 	}
 
 	@Override
-	public void addToClosed
-	(
-		ASearchNode node
-	) 
+	public void addToClosed	(ASearchNode node)
 	{
-		_closed.add(node);
+		if(!isClosed(node))
+			_closed.add(node);
 	}
 
 	@Override
@@ -89,7 +78,7 @@ public class PureHeuristicSearch  extends ASearch
 	@Override
 	public ASearchNode getBest() 
 	{
-		return _open.remove();
+		return _open.poll();
 	}
 
 }

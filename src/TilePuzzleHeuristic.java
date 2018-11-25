@@ -5,15 +5,15 @@ public class TilePuzzleHeuristic implements IHeuristic
 	@Override
 	public double getHeuristic	(IProblemState problemState	)
 	{
-		if(problemState instanceof TilePuzzle){
-			TilePuzzle tilePuzzle = (TilePuzzle)problemState;
+		if(problemState instanceof TilePuzzleState){
+			int[][] tilePuzzle = ((TilePuzzleState)problemState)._tilePuzzle;
 			int heuristic = 0;
-			for (int i = 0; i < tilePuzzle._size; i++) {
-				for (int j = 0; j < tilePuzzle._size; j++) {
-					heuristic+=tilePuzzle._tilePuzzle[i][j]*getManhattenDistance(tilePuzzle._tilePuzzle[i][j],i,j,tilePuzzle._size);
+			for (int i = 0; i < tilePuzzle.length; i++) {
+				for (int j = 0; j < tilePuzzle.length; j++) {
+					heuristic+=tilePuzzle[i][j]*getManhattenDistance(tilePuzzle[i][j],i,j,tilePuzzle.length);
 				}
 			}
-
+			return heuristic;
 		}
 		return 0;
 	}

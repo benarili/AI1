@@ -31,7 +31,7 @@ public class UniformCostSearch   extends ASearch
 	public void initLists()
 	{
 		_openList = new PriorityQueue<>(new UCSComparator());
-		_closedList = new HashSet<>();
+		_closedList = new LinkedList<>();
 	}
 
 	@Override
@@ -63,7 +63,8 @@ public class UniformCostSearch   extends ASearch
 	@Override
 	public void addToClosed	(ASearchNode node)
 	{
-		_closedList.add(node);
+		if(!isClosed(node))
+			_closedList.add(node);
 	}
 
 	@Override

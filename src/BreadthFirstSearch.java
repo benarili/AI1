@@ -26,7 +26,7 @@ public class BreadthFirstSearch  extends ASearch
 	public void initLists() 
 	{
 		_openList = new LinkedList<>();
-		_closed = new HashSet<>();
+		_closed = new LinkedList<>();
 	}
 
 	@Override
@@ -58,7 +58,8 @@ public class BreadthFirstSearch  extends ASearch
 	@Override
 	public void addToClosed	(ASearchNode node)
 	{
- 		_closed.add(node);
+		if(!isClosed(node))
+ 			_closed.add(node);
 	}
 
 	@Override
