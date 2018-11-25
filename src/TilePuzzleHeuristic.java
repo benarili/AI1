@@ -10,7 +10,7 @@ public class TilePuzzleHeuristic implements IHeuristic
 			int heuristic = 0;
 			for (int i = 0; i < tilePuzzle._size; i++) {
 				for (int j = 0; j < tilePuzzle._size; j++) {
-					heuristic+=getManhattenDistance(tilePuzzle._tilePuzzle[i][j],i,j,tilePuzzle._size);
+					heuristic+=tilePuzzle._tilePuzzle[i][j]*getManhattenDistance(tilePuzzle._tilePuzzle[i][j],i,j,tilePuzzle._size);
 				}
 			}
 

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Main 
+public class Main
 {
 
 	public static void main(String [ ] args)
 	{
-		
+
 		System.out.println("Start!");
 		task1();
 		task2();
@@ -20,7 +20,7 @@ public class Main
 		System.out.println("");
 		System.out.println("Done!");
 	}
-	
+
 	public static void task1()
 	{
 		System.out.println("---------- Task 1 ----------");
@@ -29,7 +29,7 @@ public class Main
 		for (String id : ids)
 			System.out.print(id + " | ");
 	}
-	
+
 	public static void task2()
 	{
 		System.out.println("---------- Task 2 ----------");
@@ -38,7 +38,7 @@ public class Main
 		solvers.add(bfs);
 		solveInstances(solvers, "tile3x3");
 	}
-	
+
 	public static void task3()
 	{
 		System.out.println("---------- Task 3 -----------");
@@ -47,7 +47,7 @@ public class Main
 		solvers.add(ucs);
 		solveInstances(solvers, "tile3x3");
 	}
-	
+
 	public static void task4()
 	{
 		System.out.println("---------- Task 4 -----------");
@@ -56,7 +56,7 @@ public class Main
 		solvers.add(phs);
 		solveInstances(solvers, "tile3x3");
 	}
-	
+
 	public static void task5()
 	{
 		System.out.println("---------- Task 5 -----------");
@@ -65,7 +65,7 @@ public class Main
 		solvers.add(astar);
 		solveInstances(solvers, "tile3x3");
 	}
-	
+
 	public static void task6()
 	{
 		System.out.println("---------- Task 6 -----------");
@@ -74,14 +74,10 @@ public class Main
 		solvers.add(astar);
 		solveInstances(solvers, "tile4x4");
 	}
-	
-	public static void solveInstances
-	(
-		List<ASearch> 	solvers,
-		String 			instancesType
-	) 
+
+	public static void solveInstances(List<ASearch> 	solvers,String 			instancesType)
 	{
-		try 
+		try
 		{
 			long			totalTime = 0;
 			List<String> 	instances = getInstances(instancesType);
@@ -112,38 +108,38 @@ public class Main
 			}
 			System.out.println("Total time:  " + totalTime/60000.0 + " min");
 			System.out.println("");
-		} 
-		catch (IOException e) 
+		}
+		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static List<String> getInstances
-	(
-		String type
-	) throws IOException
+			(
+					String type
+			) throws IOException
 	{
 		List<String> instances = new ArrayList<String>();
 		String currentDir = new java.io.File( "." ).getCanonicalPath() + "\\instances\\" + type + "\\";
 		File folder = new File(currentDir);
 		File[] listOfFiles = folder.listFiles();
 
-		for (int i = 0; i < listOfFiles.length; i++) 
+		for (int i = 0; i < listOfFiles.length; i++)
 		{
-			if (listOfFiles[i].isFile()) 
+			if (listOfFiles[i].isFile())
 			{
 				instances.add(currentDir + listOfFiles[i].getName());
-			} 
+			}
 		}
 		return instances;
 	}
-	
+
 	public static double checkSolution
-	(
-		IProblem 			instance,
-		List<IProblemMove> 	solution
-	)
+			(
+					IProblem 			instance,
+					List<IProblemMove> 	solution
+			)
 	{
 		if (solution == null)
 			return -1;
@@ -159,12 +155,12 @@ public class Main
 			return cost;
 		return -1;
 	}
-	
+
 	public static void printSolution
-	(
-		IProblem 			instance,
-		List<IProblemMove> 	solution
-	)
+			(
+					IProblem 			instance,
+					List<IProblemMove> 	solution
+			)
 	{
 		IProblemState currentState = instance.getProblemState();
 		for (IProblemMove move : solution)

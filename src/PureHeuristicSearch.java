@@ -6,7 +6,7 @@ public class PureHeuristicSearch  extends ASearch
 	private Queue<ASearchNode> _open;
 	private Collection<ASearchNode> _closed;
 
-	private class PHSCOmperator implements Comparator<ASearchNode>{
+	private class PHSComperator implements Comparator<ASearchNode>{
 
 		@Override
 		public int compare(ASearchNode o1, ASearchNode o2) {
@@ -32,7 +32,7 @@ public class PureHeuristicSearch  extends ASearch
 	@Override
 	public void initLists() 
 	{
-		this._open = new PriorityQueue<>(new PHSCOmperator());
+		this._open = new PriorityQueue<>(new PHSComperator());
 		this._closed = new HashSet<>();
 	}
 
