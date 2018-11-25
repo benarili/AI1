@@ -44,10 +44,7 @@ public class BlindSearchNode extends ASearchNode
 	}
 	
 	@Override
-	public boolean equals
-	(
-		Object obj
-	)
+	public boolean equals(Object obj)
 	{
 		if (obj instanceof BlindSearchNode)
 		{
