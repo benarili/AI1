@@ -139,11 +139,7 @@ public class Main
 		return instances;
 	}
 
-	public static double checkSolution
-			(
-					IProblem 			instance,
-					List<IProblemMove> 	solution
-			)
+	public static double checkSolution	(IProblem instance,	List<IProblemMove> 	solution)
 	{
 		if (solution == null)
 			return -1;
